@@ -10,24 +10,20 @@ def Kmeans(img):
     pixel_values = img.reshape((-1, 3))
 
     pixel_values = np.float32(pixel_values)
-    # define stopping criteria
+    # criterio de parada
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 100, 0.2)
 
-    # number of clusters (K)
+    # numero de clusters
     k = 3
     _, labels, (centers) = cv2.kmeans(pixel_values, k, None,
                                       criteria, 10, cv2.KMEANS_RANDOM_CENTERS)
 
-    # convert back to 8 bit values
     centers = np.uint8(centers)
 
-    # flatten the labels array
     labels = labels.flatten()
 
-    # convert all pixels to the color of the centroids
     segmented_img = centers[labels.flatten()]
 
-    # reshape back to the original image dimension
     segmented_img = segmented_img.reshape(img.shape)
 
     return segmented_img
