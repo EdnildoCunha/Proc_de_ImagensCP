@@ -2,6 +2,8 @@ import cv2
 import numpy as np
 from collections import defaultdict
 
+# Função de detecção de círculos com Hough
+
 
 def hough_circles(img, r_min, r_max, delta_r, num_theta):
     edge_img = cv2.Canny(img, 100, 200)
@@ -58,5 +60,5 @@ img_a = cv2.imread(filename, 1)
 
 # chama a função
 houghCircles = hough_circles(img_a, 10, 200, 1, 100)
-
+# Salva a imagem
 cv2.imwrite("hough_circles.png", houghCircles)
