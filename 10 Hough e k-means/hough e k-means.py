@@ -42,13 +42,10 @@ def hough_circles(img, r_min, r_max, delta_r, num_theta):
         current_vote_percentage = votes / num_theta
         if current_vote_percentage >= 0.4:
             out_circles.append((x, y, r, current_vote_percentage))
-            print(x, y, r, current_vote_percentage)
 
     # Desenha circulos na img de saida
     for x, y, r, v in out_circles:
         output_img = cv2.circle(output_img, (x, y), r, (0, 255, 0), 2)
-
-    output_img = np.uint8(output_img)
 
     return output_img
 
@@ -57,9 +54,9 @@ def hough_circles(img, r_min, r_max, delta_r, num_theta):
 filename = "img_a.png"
 
 # lê a imagem
-img_a = cv2.imread(filename, 0)
+img_a = cv2.imread(filename, 1)
 
 # chama a função
 houghCircles = hough_circles(img_a, 10, 200, 1, 100)
 
-cv2.imwrite("hough_circles.png", hough_circles)
+cv2.imwrite("hough_circles.png", houghCircles)
