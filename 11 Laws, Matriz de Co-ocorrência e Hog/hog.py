@@ -1,5 +1,4 @@
-from skimage.io import imread, imshow
-from skimage.transform import resize
+from skimage.io import imread
 from skimage.feature import hog
 import cv2
 
